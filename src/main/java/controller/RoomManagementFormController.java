@@ -89,12 +89,12 @@ public class RoomManagementFormController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-
+        System.out.println(comboRoomType.getValue());
     }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clear();
     }
 
     @FXML
@@ -117,5 +117,43 @@ public class RoomManagementFormController implements Initializable {
         ObservableList<String> comboRoomTypeList = FXCollections.observableArrayList();
         comboRoomTypeList.addAll("Single", "Double", "Twin", "Suite", "Studio", "Villa");
         comboRoomType.setItems(comboRoomTypeList);
+    }
+
+    private String getMealStatus(){
+        if(radioYes.isSelected()){
+            return "Yes";
+        }else {
+            return "No";
+        }
+    }
+
+    private String getRoomStatus(){
+        if(radioAvailable.isSelected()){
+            return "Available";
+        } else if (radioBooked.isSelected()) {
+            return "Booked";
+        } else {
+            return "Maintaining";
+        }
+    }
+
+    private void clear(){
+        txtRoomNumber.setText(null);
+        comboRoomType.setValue(null);
+        txtDescription.setText(null);
+        if(radioYes.isSelected()){
+            radioYes.setSelected(false);
+        }else{
+            radioNo.setSelected(false);
+        }
+        txtPrice.setText(null);
+        if(radioAvailable.isSelected()){
+            radioAvailable.setSelected(false);
+        } else if (radioBooked.isSelected()) {
+            radioBooked.setSelected(false);
+        } else {
+          radioMaintaining.setSelected(false);
+        }
+
     }
 }

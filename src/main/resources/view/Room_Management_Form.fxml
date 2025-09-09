@@ -95,7 +95,7 @@
                   <Font name="Calisto MT Bold" size="18.0" />
                </font>
             </JFXRadioButton>
-            <JFXTextField fx:id="txtPrice" alignment="CENTER" focusColor="#a84040" layoutX="336.0" layoutY="239.0" prefHeight="36.0" prefWidth="153.0">
+            <JFXTextField fx:id="txtPrice" focusColor="#a84040" layoutX="336.0" layoutY="239.0" prefHeight="36.0" prefWidth="153.0">
                <font>
                   <Font name="Arial Narrow Bold" size="20.0" />
                </font>
