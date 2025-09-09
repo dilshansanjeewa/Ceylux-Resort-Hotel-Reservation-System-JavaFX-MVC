@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Room;
 
 import javax.swing.*;
 import java.net.URL;
@@ -77,7 +79,7 @@ public class RoomManagementFormController implements Initializable {
     private ToggleGroup status;
 
     @FXML
-    private TableView<?> tblRoomDetails;
+    private TableView<Room> tblRoomDetails;
 
     @FXML
     private JFXTextField txtDescription;
@@ -88,16 +90,11 @@ public class RoomManagementFormController implements Initializable {
     @FXML
     private JFXTextField txtRoomNumber;
 
+    private RoomManagementInterface roomManagementInterface = new RoomManagementController();
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        if(validateInputFields()){
-            System.out.println(txtRoomNumber.getText());
-            System.out.println(comboRoomType.getValue());
-            System.out.println(txtDescription.getText());
-            System.out.println(getMealStatus());
-            System.out.println(txtPrice.getText());
-            System.out.println(getRoomStatus());
-        }
+
     }
 
     @FXML
@@ -125,6 +122,52 @@ public class RoomManagementFormController implements Initializable {
         ObservableList<String> comboRoomTypeList = FXCollections.observableArrayList();
         comboRoomTypeList.addAll("Single", "Double", "Twin", "Suite", "Studio", "Villa");
         comboRoomType.setItems(comboRoomTypeList);
+
+        colRoomNumber.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        colRoomType.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colMeals.setCellValueFactory(new PropertyValueFactory<>("mealStatus"));
+        colPricePerNight.setCellValueFactory(new PropertyValueFactory<>("pricePerNight"));
+        colRoomStatus.setCellValueFactory(new PropertyValueFactory<>("roomStatus"));
+
+        loadTable();
+
+        tblRoomDetails.getSelectionModel().selectedItemProperty().addListener((observableValue, room, info) ->{
+            if(info != null){
+                setDetails(info);
+            }
+        } );
+    }
+
+    private void setDetails(Room info) {
+        txtRoomNumber.setText(String.valueOf(info.getRoomNumber()));
+        comboRoomType.setValue(info.getRoomType());
+        txtDescription.setText(info.getDescription());
+        setMealStatus(info.getMealStatus());
+        txtPrice.setText(String.valueOf(info.getPricePerNight()));
+        setRoomStatus(info.getRoomStatus());
+    }
+
+    private void setRoomStatus(String roomStatus) {
+        if (roomStatus.equals("Available")){
+            radioAvailable.setSelected(true);
+        } else if (roomStatus.equals("Booked")) {
+            radioBooked.setSelected(true);
+        } else {
+            radioMaintaining.setSelected(true);
+        }
+    }
+
+    private void setMealStatus(String mealStatus) {
+        if(mealStatus.equals("Yes")){
+            radioYes.setSelected(true);
+        }else {
+            radioNo.setSelected(true);
+        }
+    }
+
+    private void loadTable(){
+        tblRoomDetails.setItems(roomManagementInterface.getAllinfo());
     }
 
     private String getMealStatus(){
