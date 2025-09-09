@@ -1,4 +1,4 @@
-package controller;
+package controller.roomController;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
