@@ -3,14 +3,20 @@ package controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 
-public class RoomManagementFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RoomManagementFormController implements Initializable {
 
     @FXML
     private Button btnAdd;
@@ -46,7 +52,7 @@ public class RoomManagementFormController {
     private TableColumn<?, ?> colRoomType;
 
     @FXML
-    private JFXComboBox<?> comboRoomType;
+    private JFXComboBox<String> comboRoomType;
 
     @FXML
     private ToggleGroup meals;
@@ -65,6 +71,9 @@ public class RoomManagementFormController {
 
     @FXML
     private JFXRadioButton radioYes;
+
+    @FXML
+    private ToggleGroup status;
 
     @FXML
     private TableView<?> tblRoomDetails;
@@ -103,4 +112,10 @@ public class RoomManagementFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> comboRoomTypeList = FXCollections.observableArrayList();
+        comboRoomTypeList.addAll("Single", "Double", "Twin", "Suite", "Studio", "Villa");
+        comboRoomType.setItems(comboRoomTypeList);
+    }
 }

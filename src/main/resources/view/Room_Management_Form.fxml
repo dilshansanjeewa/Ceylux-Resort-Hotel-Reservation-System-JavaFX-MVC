@@ -104,13 +104,16 @@
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="status" />
+               </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="radioBooked" layoutX="289.0" layoutY="326.0" prefHeight="22.0" prefWidth="100.0" text="Booked">
+            <JFXRadioButton fx:id="radioBooked" layoutX="289.0" layoutY="326.0" prefHeight="22.0" prefWidth="100.0" text="Booked" toggleGroup="$status">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="radioMaintaining" layoutX="289.0" layoutY="352.0" prefHeight="22.0" prefWidth="158.0" text="Maintaining">
+            <JFXRadioButton fx:id="radioMaintaining" layoutX="289.0" layoutY="352.0" prefHeight="22.0" prefWidth="158.0" text="Maintaining" toggleGroup="$status">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
