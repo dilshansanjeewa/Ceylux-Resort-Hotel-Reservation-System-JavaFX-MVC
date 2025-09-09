@@ -11,7 +11,7 @@ public class Starter extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Dash_board_Form.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Room_Management_Form.fxml"))));
         stage.setTitle("Ceylux Resort Dashboard");
         stage.setResizable(false);
         stage.show();
