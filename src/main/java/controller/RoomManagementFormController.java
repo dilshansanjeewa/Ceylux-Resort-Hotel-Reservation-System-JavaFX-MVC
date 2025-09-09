@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -89,7 +90,14 @@ public class RoomManagementFormController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        System.out.println(comboRoomType.getValue());
+        if(validateInputFields()){
+            System.out.println(txtRoomNumber.getText());
+            System.out.println(comboRoomType.getValue());
+            System.out.println(txtDescription.getText());
+            System.out.println(getMealStatus());
+            System.out.println(txtPrice.getText());
+            System.out.println(getRoomStatus());
+        }
     }
 
     @FXML
@@ -122,8 +130,10 @@ public class RoomManagementFormController implements Initializable {
     private String getMealStatus(){
         if(radioYes.isSelected()){
             return "Yes";
-        }else {
+        } else if(radioNo.isSelected()){
             return "No";
+        }else {
+            return null;
         }
     }
 
@@ -132,8 +142,10 @@ public class RoomManagementFormController implements Initializable {
             return "Available";
         } else if (radioBooked.isSelected()) {
             return "Booked";
-        } else {
+        } else if (radioMaintaining.isSelected()){
             return "Maintaining";
+        } else {
+            return null;
         }
     }
 
@@ -155,5 +167,37 @@ public class RoomManagementFormController implements Initializable {
           radioMaintaining.setSelected(false);
         }
 
+    }
+
+    private boolean validateInputFields(){
+        if(txtRoomNumber.getText().isEmpty() || txtRoomNumber.getText() == null){
+            showMessage("ERROR...\nPlease input Room Number...");
+            return false;
+        }
+        if(comboRoomType.getValue() == null){
+            showMessage("ERROR...\nPlease select a Room Type...");
+            return false;
+        }
+        if(txtDescription.getText().isEmpty() || txtDescription.getText() == null){
+            showMessage("ERROR...\nPlease input Description...");
+            return false;
+        }
+        if(getMealStatus() == null){
+            showMessage("ERROR...\nPlease select Meal Status...");
+            return false;
+        }
+        if(txtPrice.getText().isEmpty() || txtPrice.getText() == null){
+            showMessage("ERROR...\nPlease input Price Per Night...");
+            return false;
+        }
+        if(getRoomStatus() == null){
+            showMessage("ERROR...\nPlease select Room Status...");
+            return false;
+        }
+        return true;
+    }
+
+    private void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
     }
 }
