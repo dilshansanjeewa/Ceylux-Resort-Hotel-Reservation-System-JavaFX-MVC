@@ -7,4 +7,5 @@ public interface RoomManagementInterface{
     ObservableList<Room> getAllinfo();
     boolean addNewRoom(Room room);
     boolean deleteRoom(String roomNumber);
+    boolean updateInfo(Room room);
 }

@@ -7,15 +7,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.Room;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -91,6 +96,7 @@ public class RoomManagementFormController implements Initializable {
     private JFXTextField txtRoomNumber;
 
     private RoomManagementInterface roomManagement = new RoomManagementController();
+    private Stage stage;
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -142,12 +148,41 @@ public class RoomManagementFormController implements Initializable {
 
     @FXML
     void btnExitOnAction(ActionEvent event) {
-
+        try {
+            stage= (Stage) btnExit.getScene().getWindow();
+            stage.setTitle("Ceylux Resort Dashboard");
+            stage.setResizable(false);
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Dash_board_Form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        if (validateInputFields()){
+            try{
+                Room room = new Room(
+                        Integer.parseInt(txtRoomNumber.getText()),
+                        comboRoomType.getValue(),
+                        txtDescription.getText(),
+                        getMealStatus(),
+                        Double.parseDouble(txtPrice.getText()),
+                        getRoomStatus()
+                );
 
+                if(roomManagement.updateInfo(room)){
+                    showMessage("Room details updated successfully...");
+                    clear();
+                    loadTable();
+                }else {
+                    showMessage("ERROR...\nRoom details updating process failed... Please try again...");
+                }
+            }catch (NumberFormatException e){
+                showMessage("WRONG INPUT...\nPlease input correct Price...");
+            }
+        }
     }
 
     @Override

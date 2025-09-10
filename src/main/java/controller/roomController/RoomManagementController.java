@@ -75,6 +75,30 @@ public class RoomManagementController implements RoomManagementInterface{
         return false;
     }
 
+    @Override
+    public boolean updateInfo(Room room) {
+        String sql = "UPDATE room_info SET room_type = ?, description = ?, meals = ?, price_per_night = ?, room_status = ? WHERE room_number = ?;";
+
+        try {
+            PreparedStatement preparedStatement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            preparedStatement.setObject(1,room.getRoomType());
+            preparedStatement.setObject(2,room.getDescription());
+            preparedStatement.setObject(3, room.getMealStatus());
+            preparedStatement.setObject(4, room.getPricePerNight());
+            preparedStatement.setObject(5, room.getRoomStatus());
+            preparedStatement.setObject(6, room.getRoomNumber());
+
+            if (0 < preparedStatement.executeUpdate()){
+                return true;
+            }
+
+        } catch (SQLException e) {
+            showMessage(e.getSQLState()+"\n"+e.getMessage());
+        }
+        return false;
+    }
+
     private void showMessage(String mesage){
         JOptionPane.showMessageDialog(null, mesage);
     }
