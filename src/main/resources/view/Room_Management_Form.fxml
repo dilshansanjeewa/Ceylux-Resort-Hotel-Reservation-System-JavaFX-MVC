@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="666.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.roomController.RoomManagementFormController">
@@ -39,125 +40,140 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-105.0" layoutY="125.0" opacity="0.95" prefHeight="476.0" prefWidth="610.0" style="-fx-background-color: #d49b35; -fx-background-radius: 50;">
+      <AnchorPane layoutX="100.0" layoutY="396.0" opacity="0.85" prefHeight="254.0" prefWidth="1000.0" style="-fx-background-color: #d49b35; -fx-background-radius: 50;">
          <children>
-            <Label layoutX="126.0" layoutY="32.0" text="Room Number">
+            <Label layoutX="21.0" layoutY="37.0" text="Room Number :">
                <font>
                   <Font name="Calibri Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="126.0" layoutY="190.0" text="Meals Included">
-               <font>
-                  <Font name="Calibri Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="125.0" layoutY="136.0" text="Description">
-               <font>
-                  <Font name="Calibri Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="127.0" layoutY="242.0" text="Price Per Night(Rs.)">
-               <font>
-                  <Font name="Calibri Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="126.0" layoutY="294.0" text="Room Status">
-               <font>
-                  <Font name="Calibri Bold" size="25.0" />
-               </font>
-            </Label>
-            <JFXTextField fx:id="txtRoomNumber" alignment="CENTER" focusColor="#a84040" layoutX="296.0" layoutY="27.0" prefHeight="36.0" prefWidth="100.0">
+            <JFXTextField fx:id="txtRoomNumber" alignment="CENTER" focusColor="#a84040" layoutX="191.0" layoutY="31.0" prefHeight="36.0" prefWidth="100.0">
                <font>
                   <Font name="Arial Narrow Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="126.0" layoutY="86.0" text="Room Type">
+            <Label layoutX="319.0" layoutY="37.0" text="Room Type :">
                <font>
                   <Font name="Calibri Bold" size="25.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="comboRoomType" layoutX="296.0" layoutY="81.0" prefHeight="36.0" prefWidth="158.0" promptText="select room type" />
-            <JFXTextField fx:id="txtDescription" focusColor="#a84040" layoutX="296.0" layoutY="132.0" prefHeight="36.0" prefWidth="300.0">
+            <JFXComboBox fx:id="comboRoomType" layoutX="455.0" layoutY="32.0" prefHeight="36.0" prefWidth="158.0" promptText="select room type" />
+            <Label layoutX="21.0" layoutY="92.0" text="Description :">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtDescription" focusColor="#a84040" layoutX="158.0" layoutY="86.0" prefHeight="36.0" prefWidth="810.0">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXRadioButton fx:id="radioYes" layoutX="289.0" layoutY="192.0" text="YES">
+            <Label layoutX="639.0" layoutY="37.0" text="Meals Included :">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXRadioButton fx:id="radioYes" layoutX="810.0" layoutY="39.0" text="YES">
                <font>
                   <Font name="Calisto MT Bold" size="18.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="meals" />
                </toggleGroup>
+               <selectedColor>
+                  <Color red="0.6117647290229797" green="0.1882352977991104" blue="0.062745101749897" />
+               </selectedColor>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="radioNo" layoutX="394.0" layoutY="192.0" text="NO" toggleGroup="$meals">
+            <JFXRadioButton fx:id="radioNo" layoutX="890.0" layoutY="39.0" text="NO" toggleGroup="$meals">
                <font>
                   <Font name="Calisto MT Bold" size="18.0" />
                </font>
+               <selectedColor>
+                  <Color red="0.6117647290229797" green="0.1882352977991104" blue="0.062745101749897" />
+               </selectedColor>
             </JFXRadioButton>
-            <JFXTextField fx:id="txtPrice" focusColor="#a84040" layoutX="336.0" layoutY="239.0" prefHeight="36.0" prefWidth="153.0">
+            <Label layoutX="20.0" layoutY="153.0" text="Price Per Night(Rs.) :">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtPrice" focusColor="#a84040" layoutX="239.0" layoutY="148.0" prefHeight="36.0" prefWidth="180.0">
                <font>
                   <Font name="Arial Narrow Bold" size="20.0" />
                </font>
             </JFXTextField>
-            <JFXRadioButton fx:id="radioAvailable" layoutX="289.0" layoutY="300.0" prefHeight="22.0" prefWidth="90.0" text="Available">
+            <Label layoutX="443.0" layoutY="153.0" text="Room Status :">
+               <font>
+                  <Font name="Calibri Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXRadioButton fx:id="radioAvailable" layoutX="588.0" layoutY="157.0" prefHeight="22.0" prefWidth="100.0" text="Available">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="status" />
                </toggleGroup>
+               <selectedColor>
+                  <Color red="0.6117647290229797" green="0.1882352977991104" blue="0.062745101749897" />
+               </selectedColor>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="radioBooked" layoutX="289.0" layoutY="326.0" prefHeight="22.0" prefWidth="100.0" text="Booked" toggleGroup="$status">
+            <JFXRadioButton fx:id="radioBooked" layoutX="711.0" layoutY="157.0" prefHeight="22.0" prefWidth="100.0" text="Booked" toggleGroup="$status">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
+               <selectedColor>
+                  <Color red="0.6117647290229797" green="0.1882352977991104" blue="0.062745101749897" />
+               </selectedColor>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="radioMaintaining" layoutX="289.0" layoutY="352.0" prefHeight="22.0" prefWidth="158.0" text="Maintaining" toggleGroup="$status">
+            <JFXRadioButton fx:id="radioMaintaining" layoutX="821.0" layoutY="157.0" prefHeight="22.0" prefWidth="158.0" text="Maintaining" toggleGroup="$status">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
+               <selectedColor>
+                  <Color red="0.6117647290229797" green="0.1882352977991104" blue="0.062745101749897" />
+               </selectedColor>
             </JFXRadioButton>
-            <Button fx:id="btnUpdate" layoutX="233.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" style="-fx-background-radius: 10;" text="Update Room">
+            <Button fx:id="btnUpdate" layoutX="360.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" style="-fx-background-radius: 10;" text="Update Room">
                <font>
                   <Font name="Century" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" layoutX="355.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Delete Room">
+            <Button fx:id="btnDelete" layoutX="524.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Delete Room">
                <font>
                   <Font name="Century" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnClear" layoutX="477.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Clear Form">
+            <Button fx:id="btnClear" layoutX="688.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Clear Form">
                <font>
                   <Font name="Century" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnAdd" layoutX="111.0" layoutY="417.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Add Room">
+            <Button fx:id="btnAdd" layoutX="196.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="29.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Add Room">
                <font>
                   <Font name="Century" size="15.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="btnExit" layoutX="1075.0" layoutY="617.0" mnemonicParsing="false" onAction="#btnExitOnAction" opacity="0.85" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: FIREBRICK; -fx-background-radius: 30; -fx-border-color: WHITE; -fx-border-radius: 30; -fx-border-width: 3;" text="EXIT" textFill="WHITE">
+      <Button fx:id="btnExit" layoutX="1106.0" layoutY="632.0" mnemonicParsing="false" onAction="#btnExitOnAction" opacity="0.75" prefHeight="36.0" prefWidth="80.0" style="-fx-background-color: FIREBRICK; -fx-background-radius: 30; -fx-border-color: WHITE; -fx-border-radius: 30; -fx-border-width: 3;" text="EXIT" textFill="WHITE">
          <font>
-            <Font name="Georgia" size="20.0" />
+            <Font name="Georgia" size="15.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="526.0" layoutY="125.0" opacity="0.9" prefHeight="476.0" prefWidth="658.0" style="-fx-background-color: #d49b35; -fx-background-radius: 50;">
+      <AnchorPane layoutX="100.0" layoutY="83.0" opacity="0.86" prefHeight="294.0" prefWidth="1000.0" style="-fx-background-color: #d49b35; -fx-background-radius: 50;">
          <children>
-            <TableView fx:id="tblRoomDetails" layoutX="10.0" layoutY="64.0" prefHeight="379.0" prefWidth="638.0">
+            <TableView fx:id="tblRoomDetails" layoutX="8.0" layoutY="50.0" prefHeight="215.0" prefWidth="983.0">
               <columns>
                 <TableColumn fx:id="colRoomNumber" prefWidth="88.800048828125" text="Room Number" />
                 <TableColumn fx:id="colRoomType" prefWidth="84.800048828125" text="Room Type" />
-                  <TableColumn fx:id="colDescription" prefWidth="243.20001220703125" text="Description" />
-                  <TableColumn fx:id="colMeals" prefWidth="43.199951171875" text="Meals" />
-                  <TableColumn fx:id="colPricePerNight" prefWidth="91.199951171875" text="Price Per Night" />
-                  <TableColumn fx:id="colRoomStatus" prefWidth="85.5999755859375" text="Room Status" />
+                  <TableColumn fx:id="colDescription" prefWidth="571.2000122070312" text="Description" />
+                  <TableColumn fx:id="colMeals" minWidth="0.0" prefWidth="52.79998779296875" text="Meals" />
+                  <TableColumn fx:id="colPricePerNight" prefWidth="100.0" text="Price Per Night" />
+                  <TableColumn fx:id="colRoomStatus" prefWidth="84.00006103515625" text="Room Status" />
               </columns>
             </TableView>
-            <Label alignment="CENTER" layoutX="172.0" layoutY="17.0" prefHeight="36.0" prefWidth="314.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="Room Details" textFill="#d49935">
+            <Label alignment="CENTER" layoutX="350.0" layoutY="6.0" prefHeight="36.0" prefWidth="300.0" style="-fx-background-color: BLACK; -fx-background-radius: 20;" text="Room Details" textFill="#d49935">
                <font>
                   <Font name="Corbel" size="25.0" />
                </font>
