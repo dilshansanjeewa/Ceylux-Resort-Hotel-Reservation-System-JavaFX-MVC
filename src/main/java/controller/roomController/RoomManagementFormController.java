@@ -94,6 +94,28 @@ public class RoomManagementFormController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        if(validateInputFields()){
+            try{
+                Room room = new Room(
+                        Integer.parseInt(txtRoomNumber.getText()),
+                        comboRoomType.getValue(),
+                        txtDescription.getText(),
+                        getMealStatus(),
+                        Double.parseDouble(txtPrice.getText()),
+                        getRoomStatus()
+                );
+
+                if (roomManagementInterface.addNewRoom(room)){
+                   showMessage("Room added to the system succrssfully...");
+                   clear();
+                   loadTable();
+                }else {
+                    showMessage("ERROR...\nRoom adding process failed...Please try again...");
+                }
+            }catch (NumberFormatException exception){
+                showMessage("WRONG INPUT...\nPlease input correct Price...");
+            }
+        }
 
     }
 

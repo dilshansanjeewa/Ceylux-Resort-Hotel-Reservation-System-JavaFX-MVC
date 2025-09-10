@@ -5,4 +5,5 @@ import model.Room;
 
 public interface RoomManagementInterface{
     ObservableList<Room> getAllinfo();
+    boolean addNewRoom(Room room);
 }

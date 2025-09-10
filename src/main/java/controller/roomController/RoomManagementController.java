@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import model.Room;
 
 import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -38,6 +39,26 @@ public class RoomManagementController implements RoomManagementInterface{
             showMessage(e.getSQLState()+"\n"+e.getMessage());
         }
         return infoList;
+    }
+
+    @Override
+    public boolean addNewRoom(Room room) {
+        try {
+            PreparedStatement preparedStatement = DBConnection.getInstance().getConnection().prepareStatement("INSERT INTO room_info (room_number,room_type, description, meals, price_per_night, room_status) VALUES (?, ?, ?, ?, ?, ?);");
+            preparedStatement.setObject(1, room.getRoomNumber());
+            preparedStatement.setObject(2, room.getRoomType());
+            preparedStatement.setObject(3, room.getDescription());
+            preparedStatement.setObject(4, room.getMealStatus());
+            preparedStatement.setObject(5, room.getPricePerNight());
+            preparedStatement.setObject(6, room.getRoomStatus());
+
+            if (0 < preparedStatement.executeUpdate()){
+                return true;
+            }
+        } catch (SQLException e) {
+            showMessage(e.getSQLState()+"\n"+e.getMessage());
+        }
+        return false;
     }
 
     private void showMessage(String mesage){
