@@ -61,6 +61,20 @@ public class RoomManagementController implements RoomManagementInterface{
         return false;
     }
 
+    @Override
+    public boolean deleteRoom(String roomNumber) {
+        try {
+            PreparedStatement preparedStatement = DBConnection.getInstance().getConnection().prepareStatement("DELETE FROM room_info WHERE room_number = ?;");
+            preparedStatement.setObject(1, roomNumber);
+            if (0 < preparedStatement.executeUpdate()){
+                return true;
+            }
+        } catch (SQLException e) {
+            showMessage(e.getSQLState()+"\n"+e.getMessage());
+        }
+        return false;
+    }
+
     private void showMessage(String mesage){
         JOptionPane.showMessageDialog(null, mesage);
     }

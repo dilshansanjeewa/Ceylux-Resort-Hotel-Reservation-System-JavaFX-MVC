@@ -90,7 +90,7 @@ public class RoomManagementFormController implements Initializable {
     @FXML
     private JFXTextField txtRoomNumber;
 
-    private RoomManagementInterface roomManagementInterface = new RoomManagementController();
+    private RoomManagementInterface roomManagement = new RoomManagementController();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -105,7 +105,7 @@ public class RoomManagementFormController implements Initializable {
                         getRoomStatus()
                 );
 
-                if (roomManagementInterface.addNewRoom(room)){
+                if (roomManagement.addNewRoom(room)){
                    showMessage("Room added to the system succrssfully...");
                    clear();
                    loadTable();
@@ -126,7 +126,18 @@ public class RoomManagementFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        if(txtRoomNumber.getText().isEmpty() || txtRoomNumber.getText() == null){
+            showMessage("ERROR...\nPlease input Room Number...");
+            return;
+        }
 
+        if (roomManagement.deleteRoom(txtRoomNumber.getText())){
+            showMessage("Room details removed successfully...");
+            clear();
+            loadTable();
+        }else {
+            showMessage("ERROR...Room details removing process faild...Please try again...");
+        }
     }
 
     @FXML
@@ -189,7 +200,7 @@ public class RoomManagementFormController implements Initializable {
     }
 
     private void loadTable(){
-        tblRoomDetails.setItems(roomManagementInterface.getAllinfo());
+        tblRoomDetails.setItems(roomManagement.getAllinfo());
     }
 
     private String getMealStatus(){
